@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="1">
+ <tileset firstgid="1" source="tiles.tsx"/>
+ <tileset firstgid="181" source="characters.tsx"/>
+ <layer id="1" name="BG " width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztzqENACAMRNHOx0rM0l3xhDSI1j3xzInLz4hIAACAJvuh2qc+pnrXpePjl97Z3gP2tTWl
+  </data>
+ </layer>
+ <layer id="2" name="BG2" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4CBIXSgHTAKRgGVwCQ66CHHjlEwCkYBeYDS+mk0v44CfCALCSODMCQ2sWloEpo+XGaPglEwCgY3AAAb5Ac/
+  </data>
+ </layer>
+ <layer id="3" name="Platforms" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztlNENgCAMRJlWnUGcBB1WPomhuZYWrcpL7kOx5TysIdgTwbU3vPlNWXvWQax784v2t/SLskE1kbH/3fnW/F2FakqQ35YMy97Im7d8EU/7lZ5HBDXoe9FQO3/p/0q6roGaJyTUU4Ik+1a/mvcZ2KKZNas5/TNfznDKmisKxP2lUw8uq/D5rVMPLsNvWw8ub/N7ApBTUEE=
+  </data>
+ </layer>
+ <layer id="4" name="Traps" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztlLENwEAIAz1VNvgmUzAao6ahil4RQeZF4ZOQiwfb1QM9LMBDrSmCivqWe2T3PNTayuxzq3cearQy+xyWj4caybIV9RWTWa8RQoipXEM8stwfb9m/949HdipZWRgeJ7PUF3gAgOIVyg==
+  </data>
+ </layer>
+ <layer id="5" name="Enemies" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzt0wEJAAAIA0H7d7OTJQRl3CUYg68CtvX1AAiiJ/hDjz6AdANTFQM1
+  </data>
+ </layer>
+ <layer id="6" name="Mechanism" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztzgENAAAIA6BXs38pY9xNSEDCd9MOAAAAHLBjaQBC
+  </data>
+ </layer>
+ <layer id="7" name="Ladders" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAABgPIAAB
+  </data>
+ </layer>
+ <layer id="8" name="Secrets" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztzkENAAAIBKDrbXkz+NI5SEACwBe1HRjyBQAuaXiwAXI=
+  </data>
+ </layer>
+ <layer id="9" name="Coins" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzt1sEJAAAIAzH3n8BxXcFHQZBkgoN+WkVaXwewYicAgBzfig8GHV8ByQ==
+  </data>
+ </layer>
+ <layer id="10" name="Player" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAABgPIAAB
+  </data>
+ </layer>
+ <layer id="11" name="Finish" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7CJRzgeFhKeVkETALg13wEAgMIClGwAhQ==
+  </data>
+ </layer>
+</map>
