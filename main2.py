@@ -1,6 +1,7 @@
 import sys
 
 import pygame
+import pygame_menu
 import pytmx
 
 from CONSTANTS import *
@@ -20,6 +21,9 @@ AVAILABLE_FINISH = False
 class Game_Over:
     def __init__(self, score, mode):
         self.mode = mode
+
+
+menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_GREEN)
 
 
 class Mechanism(pygame.sprite.Sprite):
@@ -253,6 +257,7 @@ class Player(pygame.sprite.Sprite):
                     k += 1
             if k == 0:
                 GAME_OVER = True
+                AVAILABLE_FINISH = False
                 print('GAME OVER')
                 return
             self.pos = self.start_pos
@@ -471,6 +476,19 @@ class Artem_Level:
         self.jump_height = 11.5
 
 
+class Background(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.surf = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
+        self.rect = self.surf.get_rect()
+        self.rect.x, self.rect.y = 0, 0
+        self.image = pygame.transform.scale(pygame.image.load('maps/фон.png'),
+                                            (WINDOW_WIDTH, WINDOW_HEIGHT))
+
+    def update(self):
+        pass
+
+
 # def activate_end():
 #     global ACTIVATION_END, AVAILABLE_FINISH
 #     for sprite in secrets:
@@ -529,40 +547,18 @@ class Game:
         self.scores.add(self.score_count)
 
     def setup_level(self, level):
+        global AVAILABLE_FINISH
+        if level == self.second_level:
+            AVAILABLE_FINISH = True
         self.hero = Player(level.hero, level.jump_height)
         self.player.add(self.hero)
-        for i in level.enemys:
-            self.enemys.add(Enemy(([i[0], i[1]]), i[2]))
+        if level != self.second_level:
+            for i in level.enemys:
+                self.enemys.add(Enemy(([i[0], i[1]]), i[2]))
         self.finish_flag = AnimatedSprite(level.finish_flag[0], 'Finish')
         self.finish.add(self.finish_flag)
         self.animated_sprites.add(self.finish_flag)
         self.render_level(level.map_name)
-        self.all_sprites.add(self.hero)
-
-    def setup_second_level(self):
-        global AVAILABLE_FINISH
-        AVAILABLE_FINISH = True
-        self.hero = Player(self.second_level.hero, 12)
-        self.player.add(self.hero)
-        self.finish_flag = AnimatedSprite(self.second_level.finish_flag[0],
-                                          self.second_level.finish_flag[1])
-        self.finish.add(self.finish_flag)
-        self.animated_sprites.add(self.finish_flag)
-        self.render_level(self.second_level.map_name)
-        self.all_sprites.add(self.hero)
-
-    def setup_artem_level(self):
-        self.hero = Player(self.Artem_level.hero, 11.5)
-        self.player.add(self.hero)
-        for i in self.Artem_level.enemys:
-            self.enemys.add(Enemy(([i[0], i[1]]), i[2]))
-        self.finish_flag = AnimatedSprite(self.first_level.finish_flag[0],
-                                          self.first_level.finish_flag[1])
-        self.finish_flag = AnimatedSprite(self.Artem_level.finish_flag[0],
-                                          'Finish')
-        self.finish.add(self.finish_flag)
-        self.animated_sprites.add(self.finish_flag)
-        self.render_level(self.Artem_level.map_name)
         self.all_sprites.add(self.hero)
 
     def render_level(self, level):
@@ -616,7 +612,7 @@ class Game:
                         self.traps.add(block)
                         if [x, y] in self.secrets_places:
                             self.secrets_traps.add(block)
-                            if self.second_level.map_name:
+                            if level == self.second_level.map_name:
                                 self.traps.remove(block)
             for y in range(self.map.height):
                 for x in range(self.map.width):
@@ -718,44 +714,50 @@ class Game:
 # pygame.time.set_timer(MOVING_ENEMY_EVENT, 180)
 # pygame.time.set_timer(ANIMATED_SPRITE, 360)
 # pygame.time.set_timer(CHANGE_IMG_EVENT, 45)  # Таймер смены изображения у птиц
+# menu.mainloop(screen)
+bg_sprite = pygame.sprite.Group()
+bg = Background()
+bg_sprite.add(bg)
+
 game = Game()
 while True:
     for event in pygame.event.get():
         game.get_event(event)
-    #     if event.type == QUIT:
-    #         pygame.quit()
-    #         sys.exit()
-    #     if event.type == pygame.KEYDOWN:
-    #         if event.key == pygame.K_SPACE:
-    #             first.hero.jump()
-    #         if event.key == pygame.K_e and pygame.sprite.spritecollide(first.hero, mechanisms,
-    #                                                                    False):
-    #             for i in mechanisms:
-    #                 i.activation()
-    #         if event.key == pygame.K_ESCAPE:
-    #             new_game()
-    #     if event.type == MOVING_HERO_EVENT:
-    #         first.hero.change_img()
-    #     if event.type == MOVING_ENEMY_EVENT:
-    #         enemys.update()
-    #         coins.update()
-    #         scores.update()
-    #     if event.type == ANIMATED_SPRITE:
-    #         animated_sprites.update()
-    #     if event.type == CHANGE_IMG_EVENT:
-    #         for i in enemys:
-    #             i.change_img()
-    # if ACTIVATION_END:
-    #     activate_end()
-    # first.hero.move()
-    # all_sprites.update()
-    # all_sprites.draw(screen)
-    # animated_sprites.draw(screen)
-    # traps.draw(screen)
-    # enemys.draw(screen)
-    # coins.draw(screen)
-    # scores.draw(screen)
-    # hp.draw(screen)
+    #     #     if event.type == QUIT:
+    #     #         pygame.quit()
+    #     #         sys.exit()
+    #     #     if event.type == pygame.KEYDOWN:
+    #     #         if event.key == pygame.K_SPACE:
+    #     #             first.hero.jump()
+    #     #         if event.key == pygame.K_e and pygame.sprite.spritecollide(first.hero, mechanisms,
+    #     #                                                                    False):
+    #     #             for i in mechanisms:
+    #     #                 i.activation()
+    #     #         if event.key == pygame.K_ESCAPE:
+    #     #             new_game()
+    #     #     if event.type == MOVING_HERO_EVENT:
+    #     #         first.hero.change_img()
+    #     #     if event.type == MOVING_ENEMY_EVENT:
+    #     #         enemys.update()
+    #     #         coins.update()
+    #     #         scores.update()
+    #     #     if event.type == ANIMATED_SPRITE:
+    #     #         animated_sprites.update()
+    #     #     if event.type == CHANGE_IMG_EVENT:
+    #     #         for i in enemys:
+    #     #             i.change_img()
+    #     # if ACTIVATION_END:
+    #     #     activate_end()
+    #     # first.hero.move()
+    #     # all_sprites.update()
+    #     # all_sprites.draw(screen)
+    #     # animated_sprites.draw(screen)
+    #     # traps.draw(screen)
+    #     # enemys.draw(screen)
+    #     # coins.draw(screen)
+    #     # scores.draw(screen)
+    #     # hp.draw(screen)
+    bg_sprite.draw(screen)
     game.hero.move()
     game.all_sprites.update()
     for i in game.sprites_groups:

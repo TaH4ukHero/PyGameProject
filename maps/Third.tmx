@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="1">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="1">
  <tileset firstgid="1" source="tiles.tsx"/>
  <tileset firstgid="181" source="characters.tsx"/>
+ <tileset firstgid="208" source="Bg2.tsx"/>
  <layer id="2" name="Задний Фон1" width="44" height="22">
   <data encoding="base64" compression="zlib">
-   eJztzsEJACAMQ9HM50i1q3RXeyyC0qPCD7xjQkJSAAAAAACed8soLM0mLx3fdrrssPXb3wVSdDh5
+   eJyV09OuKAoSBNA9x7Zt27Zt27Z177Ft27Zt27Ztz/qEmaTXWz1UOqlzAQEB57nARS5xmStc5RrXucFNbnGbO9zlHvd5wEMe8ZgnPOUZz3nBS17xmje85R3v+cBHPvGZL3zlG9/5wU9+8Zs//CXgP45ABCYIQQlGcEIQklCEJgxhCUd4IhCRSEQmClGJRnRiEJNYxCYOcYlHfBKQkEQkJglJSUZyUpCSVKQmDWlJR3oykJFMZCYLWclGdnKQk1zkJg95yUd+ClCQQhSmCEUpRnFKUJJSlKYMZSlHeSpQkUpUpgpVqUZ1alCTWtSmDnWpR30a0JBGNKYJTWlGc1rQkla0pg1taUd7OtCRTnSmC13pRnd60JNe9KYPfenHP/xLfwYwkEEMZghDGcZwRjCSUYxmDGMZx3gmMJFJTGYKU5nGdGYwk1nMZg5zmcd8FrCQRSxmCUtZxnJWsJJVrGYNa1nHejawkU1sZgtb2cZ2drCTXexmD3vZx34OcJBDHOYIRznGcU5wklOc5gxnOcd5LnCRS1zmCle5xnVucJNb3OYOd7nHfR7wkEc85glPecZzXvCSV7zmDW95x3s+8JFPfOYLX/nGd37wk1/85g9/CQhk/wQiMEEISjCCE4KQhCI0YQhLOMITgYhEIjJRiEo0ohODmMQiNnGISzzik4CEJCIxSUhKMpKTgpSkIjVpSEs60pOBjGQiM1nISjayk4Oc5CI3echLPvJTgIIUojBFKEoxilOCkpSiNGUoSznKU4GKVKIyVahKNapTg5rUojZ1qEs96tOAhjSiMU1oSjOa04KWtKI1bWhLO9rTgY50ojNd6Eo3utODnvSiN33oSz/+4V/6M4CBDGIwQxjKMIYzgpGMYjRjGMs4xjOBiUxiMlOYyjSmM4OZzGI2c5jLPOazgIUsYjFLWMoylrOClaxiNWtYyzrWs4GNbGIzW9jKNrazg53sYjd72Ms+9nOAgxziMEc4yjGOc4KTnOI0ZzjLOc5zgYtc4jJXuMo1rnODm9ziNne4yz3u84CHPOIxT3jKM57zgpe84jVveMs73vOBj3ziM1/4yje+84Of/OI3f/hLQGD7JxCBCUJQghGcEIQkFKEJQ1jCEZ4IRCQSkYlCVKIRnRjEJBaxiUNc4hGfBCQkEYlJQlKSkZwUpCQVqUlDWtKRngxkJBOZyUJWspGdHOQkF7nJQ17ykZ8CFKQQhSlCUYpRnBKUpBSlKUNZylGeClSkEpWpQlWqUZ0a1KQWtalDXepRnwY0pBGNaUJTmtGcFrSkFa1pQ1va0Z4OdKQTnelCV7rRnR70pBe96UNf+vEP/9KfAQxkEIMZwlCGMZwRjGQUoxnDWMYxnglMZBKTmcJUpjGdGcxkFrOZw1zmMZ8FLGQRi1nCUpaxnBWsZBWrWcNa1rGeDWxkE5vZwla2sZ0d7GQXu9nDXvaxnwMc5BCHOcJRjnGcE5zkFKc5w1nOcZ4LXOQSl7nCVa5xnRvc5Ba3ucNd7nGfBzzkEY95wlOe8ZwXvOQVr3nDW97xng985BOf+cJXvvGdH/zkF7/5w18Cgtg/gQhMEIISjOCEICShCE0YwhKO8EQgIpGITBSiEo3oxCAmsYhNHOISj/gkICGJSEwSkpKM5KQgJalITRrSko70ZCAjmchMFrKSjezkICe5yE0e8pKP/BSgIIUoTBGKUozilKAkvbyq9/+oqnw1qlODmtSiNnWoSz3q04CGNKIxTWhKM5rTgpa0ojVtaEs72tOBjnSiM13o+n/27S8/gIEMYjBDGMowhjOCkYxiNGMYyzjGM4GJTGIyU5jKfwEQjuC2
   </data>
  </layer>
  <layer id="1" name="Заддний Фон2" width="44" height="22">
@@ -14,12 +15,12 @@
  </layer>
  <layer id="3" name="Земля" width="44" height="22">
   <data encoding="base64" compression="zlib">
-   eJztlMEKgCAMQPdl1blPKr+hOlcf24TEMZyoQfOwB+8Sig8dARiGUcKJXsRbN8cgDOikHVHBgjrtiBc619JM99Sbwr//CHEGeu/1fSvExr97S96cot1bi0bvl3+Q1BvmmsvPkdbl9oYz5gal3vCdy+9eWpfba73Wa71tvb2woXvCQzMqwwM3vXpp
+   eJztlFEKgCAMhj1Z9dyRqjNUz9Vhm5A4hhNd0XzYB/+LTPbhhs4ZhlHCATlRLl0dA9FBBm2JCibIoi3xgPea2+mWfFP4+fcu7kDrvt5vdtHxb9+SmWO0fWvR8H3zB3G+Ya9paB+uLnc39BgF4XzDOQ19e64ud9d8zdd8Zb41fPFncr4rZEtkl8omekjgfG8Y8YIb
   </data>
  </layer>
  <layer id="4" name="Ловушки" width="44" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2BggesQMXMUjAJSwGgaHBigNED2khvfXlR1Be3BqHvxx7USGRgZEOteoBsWQOkEIrWguJFagB7upWYcDlf34kpP1LSD3mbRw45R944CXAAANtMMsg==
+   eJxjYBgFo2BggesQMXMUjAJSwGgaHBigNED2khvfXlR1Be3BqHvxx7USGRgZEOteoBsWQOkEIrWguJFagB7upWYcDlf34kpP1LSD3mbRw47h6l4vJEyJHV5k4OHiXgCFTRca
   </data>
  </layer>
  <layer id="5" name="Монстры" width="44" height="22">
