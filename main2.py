@@ -3,12 +3,14 @@ import sys
 import pygame
 import pygame_menu
 import pytmx
+import pygame_menu as pgm
 
 from CONSTANTS import *
 from EVENTS import *
 
 pygame.init()
-screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+# screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Game")
 
 vec = pygame.math.Vector2
@@ -16,6 +18,7 @@ Clock = pygame.time.Clock()
 ACTIVATION_END = False
 GAME_OVER = False
 AVAILABLE_FINISH = False
+RUN_GAME = False
 
 
 class Game_Over:
@@ -23,7 +26,27 @@ class Game_Over:
         self.mode = mode
 
 
-menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_GREEN)
+# def quit_from_game():
+#     menu.close()
+#
+#
+# font = pgm.font.get_font('maps/PeaberryDoublespace.ttf', 40)
+# my_theme = pgm.Theme(widget_font=font, widget_font_color=pygame.Color(113, 170, 52),
+#                      title_bar_style=pgm.widgets.MENUBAR_STYLE_NONE,
+#                      title_font_color=pygame.Color(113, 170, 52), title_font_size=50,
+#                      selection_color=pygame.Color(52, 85, 81))
+# my_theme.background_color = pygame.Color(223, 246, 245)
+# menu = pgm.Menu('', 800, 600, theme=my_theme)
+# menu.add.button('Play', None)
+# menu.add.text_input('Nickname : ', default='Player1', maxchar=11)
+# items = [('First',), ('Third',), ('Second',)]
+# menu.add.button('First', None, align=pgm.locals.ALIGN_CENTER)
+# menu.add.button('Second', None, align=pgm.locals.ALIGN_CENTER)
+# menu.add.button('Third', None, align=pgm.locals.ALIGN_CENTER)
+# menu.add.button('Quit', quit_from_game())
+
+
+# menu.mainloop(screen)
 
 
 class Mechanism(pygame.sprite.Sprite):
@@ -489,19 +512,6 @@ class Background(pygame.sprite.Sprite):
         pass
 
 
-# def activate_end():
-#     global ACTIVATION_END, AVAILABLE_FINISH
-#     for sprite in secrets:
-#         platforms.add(sprite)
-#         all_sprites.add(sprite)
-#     for sprite in secrets_platforms:
-#         platforms.remove(sprite)
-#     for sprite in secrets_traps:
-#         traps.remove(sprite)
-#     ACTIVATION_END = False
-#     AVAILABLE_FINISH = True
-
-
 class Game:
     pygame.time.set_timer(MOVING_HERO_EVENT, 240)
     pygame.time.set_timer(MOVING_ENEMY_EVENT, 180)
@@ -720,6 +730,8 @@ bg = Background()
 bg_sprite.add(bg)
 
 game = Game()
+# menu.mainloop(screen)
+
 while True:
     for event in pygame.event.get():
         game.get_event(event)
