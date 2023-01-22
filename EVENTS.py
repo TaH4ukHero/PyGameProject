@@ -1,6 +1,8 @@
+import pygame.event
 from pygame.locals import *
 
 MOVING_HERO_EVENT = USEREVENT + 1
 MOVING_ENEMY_EVENT = USEREVENT + 2
 ANIMATED_SPRITE = USEREVENT + 3
 CHANGE_IMG_EVENT = USEREVENT + 4
+

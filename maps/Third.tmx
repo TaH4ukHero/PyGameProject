@@ -5,55 +5,55 @@
  <tileset firstgid="208" source="Bg2.tsx"/>
  <layer id="2" name="Задний Фон1" width="44" height="22">
   <data encoding="base64" compression="zlib">
-   eJyV09OuKAoSBNA9x7Zt27Zt27Z177Ft27Zt27Ztz/qEmaTXWz1UOqlzAQEB57nARS5xmStc5RrXucFNbnGbO9zlHvd5wEMe8ZgnPOUZz3nBS17xmje85R3v+cBHPvGZL3zlG9/5wU9+8Zs//CXgP45ABCYIQQlGcEIQklCEJgxhCUd4IhCRSEQmClGJRnRiEJNYxCYOcYlHfBKQkEQkJglJSUZyUpCSVKQmDWlJR3oykJFMZCYLWclGdnKQk1zkJg95yUd+ClCQQhSmCEUpRnFKUJJSlKYMZSlHeSpQkUpUpgpVqUZ1alCTWtSmDnWpR30a0JBGNKYJTWlGc1rQkla0pg1taUd7OtCRTnSmC13pRnd60JNe9KYPfenHP/xLfwYwkEEMZghDGcZwRjCSUYxmDGMZx3gmMJFJTGYKU5nGdGYwk1nMZg5zmcd8FrCQRSxmCUtZxnJWsJJVrGYNa1nHejawkU1sZgtb2cZ2drCTXexmD3vZx34OcJBDHOYIRznGcU5wklOc5gxnOcd5LnCRS1zmCle5xnVucJNb3OYOd7nHfR7wkEc85glPecZzXvCSV7zmDW95x3s+8JFPfOYLX/nGd37wk1/85g9/CQhk/wQiMEEISjCCE4KQhCI0YQhLOMITgYhEIjJRiEo0ohODmMQiNnGISzzik4CEJCIxSUhKMpKTgpSkIjVpSEs60pOBjGQiM1nISjayk4Oc5CI3echLPvJTgIIUojBFKEoxilOCkpSiNGUoSznKU4GKVKIyVahKNapTg5rUojZ1qEs96tOAhjSiMU1oSjOa04KWtKI1bWhLO9rTgY50ojNd6Eo3utODnvSiN33oSz/+4V/6M4CBDGIwQxjKMIYzgpGMYjRjGMs4xjOBiUxiMlOYyjSmM4OZzGI2c5jLPOazgIUsYjFLWMoylrOClaxiNWtYyzrWs4GNbGIzW9jKNrazg53sYjd72Ms+9nOAgxziMEc4yjGOc4KTnOI0ZzjLOc5zgYtc4jJXuMo1rnODm9ziNne4yz3u84CHPOIxT3jKM57zgpe84jVveMs73vOBj3ziM1/4yje+84Of/OI3f/hLQGD7JxCBCUJQghGcEIQkFKEJQ1jCEZ4IRCQSkYlCVKIRnRjEJBaxiUNc4hGfBCQkEYlJQlKSkZwUpCQVqUlDWtKRngxkJBOZyUJWspGdHOQkF7nJQ17ykZ8CFKQQhSlCUYpRnBKUpBSlKUNZylGeClSkEpWpQlWqUZ0a1KQWtalDXepRnwY0pBGNaUJTmtGcFrSkFa1pQ1va0Z4OdKQTnelCV7rRnR70pBe96UNf+vEP/9KfAQxkEIMZwlCGMZwRjGQUoxnDWMYxnglMZBKTmcJUpjGdGcxkFrOZw1zmMZ8FLGQRi1nCUpaxnBWsZBWrWcNa1rGeDWxkE5vZwla2sZ0d7GQXu9nDXvaxnwMc5BCHOcJRjnGcE5zkFKc5w1nOcZ4LXOQSl7nCVa5xnRvc5Ba3ucNd7nGfBzzkEY95wlOe8ZwXvOQVr3nDW97xng985BOf+cJXvvGdH/zkF7/5w18Cgtg/gQhMEIISjOCEICShCE0YwhKO8EQgIpGITBSiEo3oxCAmsYhNHOISj/gkICGJSEwSkpKM5KQgJalITRrSko70ZCAjmchMFrKSjezkICe5yE0e8pKP/BSgIIUoTBGKUozilKAkvbyq9/+oqnw1qlODmtSiNnWoSz3q04CGNKIxTWhKM5rTgpa0ojVtaEs72tOBjnSiM13o+n/27S8/gIEMYjBDGMowhjOCkYxiNGMYyzjGM4GJTGIyU5jKfwEQjuC2
+   eJztzjERACAMBLDXXbTUa5HABsdlyJ5O0gAAAHyjtnXo9vWl7wDqVE7Z
   </data>
  </layer>
- <layer id="1" name="Заддний Фон2" width="44" height="22">
+ <layer id="1" name="Заддний Фон2" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2DgQBYQZ0Nx1gC7ZSDALCCejYTnDJA7+IGYF4gFkMSaBsgtxALFgXYADoArTZsOjHPIAo1A7MlAnTSALW0NFCDWLaSmLVqWY8S4ZTClLWLcQoyaSAZIOqQmAMVNE5K5IL4nFnukoWKZUPUgNbD4halthKobqHJSGY0e7MAcjR7swBuNHgXUBV5IeCiAoebeUUA5AAAMphZV
   </data>
  </layer>
- <layer id="3" name="Земля" width="44" height="22">
+ <layer id="3" name="Земля" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJztlFEKgCAMhj1Z9dyRqjNUz9Vhm5A4hhNd0XzYB/+LTPbhhs4ZhlHCATlRLl0dA9FBBm2JCibIoi3xgPea2+mWfFP4+fcu7kDrvt5vdtHxb9+SmWO0fWvR8H3zB3G+Ya9paB+uLnc39BgF4XzDOQ19e64ud9d8zdd8Zb41fPFncr4rZEtkl8omekjgfG8Y8YIb
   </data>
  </layer>
- <layer id="4" name="Ловушки" width="44" height="22">
+ <layer id="4" name="Ловушки" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2BggesQMXMUjAJSwGgaHBigNED2khvfXlR1Be3BqHvxx7USGRgZEOteoBsWQOkEIrWguJFagB7upWYcDlf34kpP1LSD3mbRw47h6l4vJEyJHV5k4OHiXgCFTRca
   </data>
  </layer>
- <layer id="5" name="Монстры" width="44" height="22">
+ <layer id="5" name="Монстры" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzkENACAMBMEaIGABEYhAVlHOWejr0mQn2f9G9DfVUMs9UrDdA0XHPVDw1FXpHgEAAADQygfm6gHP
   </data>
  </layer>
- <layer id="6" name="Механизмы" width="44" height="22">
+ <layer id="6" name="Механизмы" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzjEBAAAMAiCrrX+pvTbwgQQksHHrAAAAQHlE8QBC
   </data>
  </layer>
- <layer id="7" name="Лестницы" width="44" height="22">
+ <layer id="7" name="Лестницы" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzkENADAIBDBETcT8K5oGHuxC0ipoFZBw0oGmmw40+c7yneU7a9sXgH8eqKsCdQ==
   </data>
  </layer>
- <layer id="8" name="Секреты" width="44" height="22">
+ <layer id="8" name="Секреты" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzsEJwCAQRFEbkNiCPSQlCLaVlGEs1jl6StjDOgjz4N9/CPs7UESJPWKQ2QNGF3vA4EEF3eyRHydq6J3q1KNvlT1gpF9f+vWlX1+7/YqIyDoDaokHRg==
   </data>
  </layer>
- <layer id="9" name="Монетки (3штука макс)" width="44" height="22">
+ <layer id="9" name="Монетки (3штука макс)" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1DENAAAIBLH3rwC5iGAAklbAjZewqZ51AbjL+wFgpgFfLAHJ
   </data>
  </layer>
- <layer id="10" name="Игрок" width="44" height="22">
+ <layer id="10" name="Игрок" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzgENAAAIA6D372M/Y9w5SEACAPDftAMAnLdseAC2
   </data>
  </layer>
- <layer id="11" name="Финиш" width="44" height="22">
+ <layer id="11" name="Финиш" width="44" height="22" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzoEJAAAEADDHO9wNiqS2CxYBbMvrQNO3LwAATCjKxQEJ
   </data>

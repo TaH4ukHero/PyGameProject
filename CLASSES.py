@@ -33,8 +33,9 @@ class Ledder(pygame.sprite.Sprite):
 
 
 class AnimatedSprite(pygame.sprite.Sprite):
-    def __init__(self, pos, mode=False):
+    def __init__(self, pos, tile_size, mode=False):
         super(AnimatedSprite, self).__init__()
+        self.tile_size = tile_size
         self.mode = mode
         self.images = ('maps/kenney_pixelPlatformer/Tiles/tile_0033.png',
                        'maps/kenney_pixelPlatformer/Tiles/tile_0053.png')
@@ -44,24 +45,24 @@ class AnimatedSprite(pygame.sprite.Sprite):
         if mode:
             self.image = pygame.transform.scale(
                 pygame.image.load(self.images_coins[(self.cur_img + 1)
-                                                    % 2]), [TILE_SIZE, TILE_SIZE])
+                                                    % 2]), [self.tile_size, self.tile_size])
         else:
             self.image = pygame.transform.scale(pygame.image.load(self.images[(self.cur_img + 1) %
                                                                               2]),
-                                                [TILE_SIZE, TILE_SIZE])
-        self.surf = pygame.Surface((TILE_SIZE, TILE_SIZE))
+                                                [self.tile_size, self.tile_size])
+        self.surf = pygame.Surface((self.tile_size, self.tile_size))
         self.rect = self.surf.get_rect()
-        self.rect.x, self.rect.y = pos[0] * TILE_SIZE, pos[1] * TILE_SIZE
+        self.rect.x, self.rect.y = pos[0] * self.tile_size, pos[1] * self.tile_size
 
     def update(self):
         if self.mode:
             self.image = pygame.transform.scale(
                 pygame.image.load(self.images_coins[(self.cur_img + 1)
-                                                    % 2]), [TILE_SIZE, TILE_SIZE])
+                                                    % 2]), [self.tile_size, self.tile_size])
         else:
             self.image = pygame.transform.scale(pygame.image.load
                                                 (self.images[(self.cur_img + 1) % 2])
-                                                , [TILE_SIZE, TILE_SIZE])
+                                                , [self.tile_size, self.tile_size])
         self.cur_img += 1
 
 
