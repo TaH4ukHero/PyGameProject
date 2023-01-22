@@ -8,12 +8,9 @@ from pygame.locals import *
 from CONSTANTS import *
 
 pygame.init()
-# screen = pygame.display.set_mode((800,600))
 flags = DOUBLEBUF
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), flags, 8)
 pygame.display.set_caption("Game")
-# pygame.event.set_allowed([MOVING_ENEMY_EVENT, MOVING_HERO_EVENT, ANIMATED_SPRITE,
-#                           CHANGE_IMG_EVENT, KEYDOWN, QUIT, USEREVENT])
 MOVING_HERO_EVENT = pygame.USEREVENT + 1
 MOVING_ENEMY_EVENT = pygame.USEREVENT + 2
 ANIMATED_SPRITE = pygame.USEREVENT + 3
@@ -24,31 +21,33 @@ Clock = pygame.time.Clock()
 ACTIVATION_END = False
 GAME_OVER = False
 AVAILABLE_FINISH = False
-CURRENT_STATUS = 'Game_Over'
+CURRENT_STATUS = 'Menu'
 SETUP_SCREEN = False
 CHOOSED_LEVEL = 'First'
 FLAG = False
+CURRENT_SCORE = 0
 
 
 class GameOver:
     def __init__(self):
         self.sprites = pygame.sprite.Group()
+        pygame.init()
         self.coin = AnimatedSprite((4.9, 4.6), 64, True)
         self.sprites.add(self.coin)
         self.btns = {'Back': ['active', 0], 'Restart': ['unactive', 1]}
         self.cur_btn = 0
         self.active_color = pygame.Color(182, 213, 60)
         self.unactive_color = pygame.Color(52, 85, 81)
-        self.score = 0
 
-    def draw(self, screen):
-        font = pygame_menu.font.get_font('maps/PeaberryDoublespace.ttf', 64)
-        screen.blit(pygame.transform.scale(pygame.image.load('maps/Screenshot_4.png'), (800, 600)),
+    def draw(self, screen, score):
+        pygame.font.init()
+        font = pygame_menu.font.get_font('Font/PeaberryDoublespace.ttf', 64)
+        screen.blit(pygame.transform.scale(pygame.image.load('Images/Screenshot_4.png'), (800, 600)),
                     (0, 0))
         text = font.render('GAME OVER', False, pygame.Color(182, 213, 60))
         x, y = 220, 80
         screen.blit(text, (x, y))
-        text = font.render(f'x {self.score}', False, pygame.Color(182, 213, 60))
+        text = font.render(f'x {score}', False, pygame.Color(182, 213, 60))
         x, y = 400, 300
         screen.blit(text, (x, y))
         x, y = 150, 200
@@ -59,11 +58,12 @@ class GameOver:
                 text = font.render(key, False, self.unactive_color)
             screen.blit(text, (x, y))
             x += 256
+        self.sprites.draw(screen)
 
     def get_events(self, event):
         global CURRENT_STATUS, SETUP_SCREEN, FLAG
         if event.type == pygame.QUIT:
-            pygame.quit()
+            pygame.display.quit()
             sys.exit()
         if event.type == ANIMATED_SPRITE:
             self.sprites.update()
@@ -79,9 +79,15 @@ class GameOver:
                     self.cur_btn = 0
                 self.change_active(self.cur_btn)
             if event.key == pygame.K_e and self.btns['Back'][0] == 'active':
+                with open(f'logs/Last_Attempt_of_{CHOOSED_LEVEL}', 'w', encoding='utf8') as f:
+                    f.write(f'Последняя попытка - {CURRENT_SCORE} монет.')
                 CURRENT_STATUS = 'Menu'
                 SETUP_SCREEN = False
+                menu.cur_window = 0
+                menu.cur_btn = 0
             if event.key == pygame.K_e and self.btns['Restart'][0] == 'active':
+                with open(f'logs/Last_Attempt_of_{CHOOSED_LEVEL}', 'w', encoding='utf8') as f:
+                    f.write(f'Последняя попытка - {CURRENT_SCORE} монет.')
                 FLAG = True
                 SETUP_SCREEN = False
 
@@ -336,9 +342,9 @@ class Player(pygame.sprite.Sprite):
         if pygame.sprite.spritecollide(self, game.coins, True):
             game.score_count.score += 1
             game.score_count.update()
+            self.score += 1
         if pygame.sprite.spritecollide(self, game.finish, False) and AVAILABLE_FINISH:
             GAME_OVER = True
-            print('YOU WON')
             self.end_game()
 
     def jump(self):
@@ -360,11 +366,11 @@ class Player(pygame.sprite.Sprite):
         self.cur_img += 1
 
     def end_game(self):
-        global SETUP_SCREEN, CURRENT_STATUS
-        game_over.score = self.score
-        pygame.quit()
+        global SETUP_SCREEN, CURRENT_STATUS, CURRENT_SCORE
+        pygame.display.quit()
         CURRENT_STATUS = 'Game_Over'
         SETUP_SCREEN = False
+        CURRENT_SCORE = self.score
 
 
 class Tile(pygame.sprite.Sprite):
@@ -374,90 +380,6 @@ class Tile(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect()
         self.rect.x, self.rect.y = pos[0] * TILE_SIZE, pos[1] * TILE_SIZE
         self.image = pygame.transform.scale(image, (TILE_SIZE, TILE_SIZE))
-
-
-# class Map:
-#     def __init__(self, filename):
-#         super(Map, self).__init__()
-#         self.map = pytmx.load_pygame(f'maps/{filename}')
-#         self.secrets = []
-#
-#     def render(self):
-#         for y in range(self.map.height):
-#             for x in range(self.map.width):
-#                 image = self.map.get_tile_image(x, y, 7)  # Secrets
-#                 if image is not None:
-#                     self.secrets.append([x, y])
-#         for y in range(self.map.height):
-#             for x in range(self.map.width):
-#                 image = self.map.get_tile_image(x, y, 0)  # BG
-#                 if image is not None:
-#                     if y == WINDOW_HEIGHT // TILE_SIZE - 1:
-#                         block = AnimatedSprite((x, y))
-#                         animated_sprites.add(block)
-#                     else:
-#                         block = Tile((x, y), image)
-#                         all_sprites.add(block)
-#         for y in range(self.map.height):
-#             for x in range(self.map.width):
-#                 image = self.map.get_tile_image(x, y, 1)  # BG2
-#                 if image is not None:
-#                     block = Tile((x, y), image)
-#                     if [x, y] in self.secrets:
-#                         secrets.add(block)
-#                     else:
-#                         all_sprites.add(block)
-#         for y in range(self.map.height):
-#             for x in range(self.map.width):
-#                 image = self.map.get_tile_image(x, y, 2)  # Platforms
-#                 if image is not None:
-#                     block = Tile((x, y), image)
-#                     all_sprites.add(block)
-#                     if [x, y] in self.secrets:
-#                         secrets_platforms.add(block)
-#                         platforms.add(block)
-#                     else:
-#                         platforms.add(block)
-#         for y in range(self.map.height):
-#             for x in range(self.map.width):
-#                 image = self.map.get_tile_image(x, y, 3)  # Traps
-#                 if image is not None:
-#                     if y == WINDOW_HEIGHT // TILE_SIZE - 1:
-#                         block = AnimatedSprite((x, y))
-#                         animated_sprites.add(block)
-#                         traps.add(block)
-#                     else:
-#                         block = Tile((x, y), image)
-#                         traps.add(block)
-#                         if [x, y] in self.secrets:
-#                             secrets_traps.add(block)
-#             for y in range(self.map.height):
-#                 for x in range(self.map.width):
-#                     image = self.map.get_tile_image(x, y, 5)  # Mechanisms
-#                     if image is not None:
-#                         block = Mechanism((x, y))
-#                         mechanisms.add(block)
-#                         all_sprites.add(block)
-#             for y in range(self.map.height):
-#                 for x in range(self.map.width):
-#                     image = self.map.get_tile_image(x, y, 6)  # Ledders
-#                     if image is not None:
-#                         block = Ledder((x, y))
-#                         ledders.add(block)
-#                         all_sprites.add(block)
-#             for y in range(self.map.height):
-#                 for x in range(self.map.width):
-#                     image = self.map.get_tile_image(x, y, 8)  # Coins
-#                     if image is not None:
-#                         coin = AnimatedSprite((x, y), True)
-#                         coins.add(coin)
-#             for y in range(self.map.height):
-#                 for x in range(self.map.width):
-#                     image = self.map.get_tile_image(x, y, 10)  # Finish
-#                     if image is not None:
-#                         flag = Tile([x, y], image)
-#                         all_sprites.add(flag)
-#                         finish.add(flag)
 
 
 class Score(pygame.sprite.Sprite):
@@ -492,45 +414,6 @@ class Score(pygame.sprite.Sprite):
                                                  TILE_SIZE])
 
 
-# platforms = pygame.sprite.Group()
-# traps = pygame.sprite.Group()
-# animated_sprites = pygame.sprite.Group()
-# ledders = pygame.sprite.Group()
-# coins = pygame.sprite.Group()
-# mechanisms = pygame.sprite.Group()
-# player = pygame.sprite.Group()
-# secrets = pygame.sprite.Group()  # Платформы которые потом включатся
-# secrets_traps = pygame.sprite.Group()  # Ловушки которые пропадут
-# secrets_platforms = pygame.sprite.Group()  # Платформы которые потом выключатся
-# scores = pygame.sprite.Group()
-# finish = pygame.sprite.Group()
-#
-# score_coin = AnimatedSprite((6, 0), True)
-# score_sign = Score((7, 0), True)
-# score_count = Score((8, 0), False)
-# scores.add(score_coin)
-# scores.add(score_sign)
-# scores.add(score_count)
-# finish_flag = AnimatedSprite((40, 2), 'Finish')
-# finish.add(finish_flag)
-
-# all_sprites = pygame.sprite.Group()
-# hp = pygame.sprite.Group()
-# heart1 = HealthPoint((0, 0))
-# heart2 = HealthPoint((1, 0))
-# heart3 = HealthPoint((2, 0))
-# hp.add(heart3)
-# hp.add(heart2)
-# hp.add(heart1)
-# enemys = pygame.sprite.Group()
-
-
-# pygame.time.set_timer(MOVING_HERO_EVENT, 240)
-# pygame.time.set_timer(MOVING_ENEMY_EVENT, 180)
-# pygame.time.set_timer(ANIMATED_SPRITE, 360)
-# pygame.time.set_timer(CHANGE_IMG_EVENT, 90)
-
-
 class First_Level:
     def __init__(self):
         self.hero = [1, 16]
@@ -558,21 +441,9 @@ class Third_Level:
 
 
 def exit_from_game():
-    pygame.quit()
+    pygame.display.quit()
     sys.exit()
 
-
-# def activate_end():
-#     global ACTIVATION_END, AVAILABLE_FINISH
-#     for sprite in secrets:
-#         platforms.add(sprite)
-#         all_sprites.add(sprite)
-#     for sprite in secrets_platforms:
-#         platforms.remove(sprite)
-#     for sprite in secrets_traps:
-#         traps.remove(sprite)
-#     ACTIVATION_END = False
-#     AVAILABLE_FINISH = True
 
 class Menu:
     def __init__(self):
@@ -588,7 +459,7 @@ class Menu:
 
     def draw(self, screen):
         screen.fill(self.bg_color)
-        font = pygame_menu.font.get_font('maps/PeaberryDoublespace.ttf', 50)
+        font = pygame_menu.font.get_font('Font/PeaberryDoublespace.ttf', 50)
         if self.cur_window == 0:
             btns = self.btns_first_window
             x, y = 250, 200
@@ -652,7 +523,6 @@ class Menu:
             if event.key == pygame.K_f and self.cur_window == 1:
                 for key, val in self.btns_second_window.items():
                     if val[0] == 'active' and key != 'Back':
-                        # print(f'{key.strip(" Level")}')
                         CHOOSED_LEVEL = f'{key.strip(" Lvl")}'
                         FLAG = True
                         SETUP_SCREEN = False
@@ -680,14 +550,6 @@ class Game:
         self.finish = pygame.sprite.Group()
         self.sprites_groups = [self.all_sprites, self.animated_sprites, self.traps, self.enemys,
                                self.coins, self.scores, self.hp, self.player]
-        # self.first_level = First_Level()
-        # self.Third_Level = Third_Level()
-        # self.second_level = Second_Level()
-        # self.setup_level('First')
-        # self.setup_base_of_game()
-        # self.cur_lvl = self.first_level.map_name
-        # self.Menu = Menu()
-        # self.Game_Over = GameOver()
 
     def setup_game(self, level):
         for i in self.sprites_groups:
@@ -713,13 +575,11 @@ class Game:
             level = First_Level()
         elif level == 'Third':
             level = Third_Level()
-        # if level == self.second_level:
         elif level == 'Second':
             AVAILABLE_FINISH = True
             level = Second_Level()
         self.hero = Player(level.hero, level.jump_height)
         self.player.add(self.hero)
-        # if level != self.second_level:
         if self.cur_lvl != 'Second':
             for i in level.enemys:
                 self.enemys.add(Enemy(([i[0], i[1]]), i[2]))
@@ -823,10 +683,6 @@ class Game:
                         self.all_sprites.add(flag)
                         self.finish.add(flag)
 
-    def new_game(self):
-        for i in self.hp:
-            i.reborn()
-
     def get_event(self, event):
         if event.type == QUIT:
             exit_from_game()
@@ -875,46 +731,44 @@ class Game:
         AVAILABLE_FINISH = True
 
 
-# pygame.time.set_timer(MOVING_HERO_EVENT, 240)
-# pygame.time.set_timer(MOVING_ENEMY_EVENT, 180)
-# pygame.time.set_timer(ANIMATED_SPRITE, 360)
-# pygame.time.set_timer(CHANGE_IMG_EVENT, 45)  # Таймер смены изображения у птиц
-# menu.mainloop(screen)
 game = Game()
-# game.setup_game(CHOOSED_LEVEL)
 menu = Menu()
 game_over = GameOver()
 
 
 def set_timers():
-    pygame.time.set_timer(MOVING_HERO_EVENT, 240)
+    pygame.time.set_timer(MOVING_HERO_EVENT, 0)
+    pygame.time.set_timer(MOVING_ENEMY_EVENT, 0)
+    pygame.time.set_timer(ANIMATED_SPRITE, 0)
+    pygame.time.set_timer(CHANGE_IMG_EVENT, 0)
+    pygame.time.set_timer(MOVING_HERO_EVENT, 480)
     pygame.time.set_timer(MOVING_ENEMY_EVENT, 300)
-    pygame.time.set_timer(ANIMATED_SPRITE, 400)
+    pygame.time.set_timer(ANIMATED_SPRITE, 200)
     pygame.time.set_timer(CHANGE_IMG_EVENT, 45)  # Таймер смены изображения у птиц
 
 
 while 1:
+    if not SETUP_SCREEN:
+        if FLAG:
+            pygame.display.quit()
+            screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), flags, 8)
+            screen.set_alpha(True)
+            SETUP_SCREEN = True
+            set_timers()
+            game.setup_game(CHOOSED_LEVEL)
+            CURRENT_STATUS = 'Play'
+            FLAG = False
+        elif CURRENT_STATUS == 'Menu' or CURRENT_STATUS == 'Game_Over':
+            pygame.display.quit()
+            screen = pygame.display.set_mode((800, 600), flags, 8)
+            set_timers()
+            screen.set_alpha(True)
+            SETUP_SCREEN = True
+            if CURRENT_STATUS == 'Game_Over':
+                game_over.score = CURRENT_SCORE
     for event in pygame.event.get():
-        if not SETUP_SCREEN:
-            if FLAG:
-                pygame.display.quit()
-                screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), flags, 8)
-                screen.set_alpha(True)
-                SETUP_SCREEN = True
-                set_timers()
-                game.setup_game(CHOOSED_LEVEL)
-                CURRENT_STATUS = 'Play'
-                FLAG = False
-            elif CURRENT_STATUS == 'Menu' or CURRENT_STATUS == 'Game_Over':
-                pygame.display.quit()
-                screen = pygame.display.set_mode((800, 600), flags, 8)
-                set_timers()
-                screen.set_alpha(True)
-                SETUP_SCREEN = True
         if CURRENT_STATUS == 'Play':
             game.get_event(event)
-            # for i in game.sprites_groups:
-            #     i.draw(screen)
         elif CURRENT_STATUS == 'Menu':
             menu.get_events(event)
         elif CURRENT_STATUS == 'Game_Over':
@@ -931,7 +785,7 @@ while 1:
     elif CURRENT_STATUS == 'Menu':
         menu.draw(screen)
     elif CURRENT_STATUS == 'Game_Over':
-        game_over.draw(screen)
+        game_over.draw(screen, CURRENT_SCORE)
         game_over.sprites.draw(screen)
     pygame.display.flip()
     Clock.tick(FPS)
