@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="21" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="1">
+ <tileset firstgid="1" source="0x72_DungeonTilesetII_v1.4.tsx"/>
+ <tileset firstgid="1025" source="tiles.tsx"/>
+ <layer id="1" name="BG" width="20" height="21">
+  <data encoding="base64" compression="zlib">
+   eJy1kwEKgCAMRb2LN6lOEp0kd5M6SV0sBYMxtrmJBp9WyPf9TUMY+0SkJWur9Y5qqgPVK/kuugYJ+8Ekv7u+U8ceXN4n6xXWU/9k8OOYTiPv7wfCWmAYPHk5BszWk7fVMy2zxc/TR4tfYnJJPfXyeedBGUacZ2muQPZq+Uks2gzoP4ufJs2Pm18rI73rvXyW8yf1R7ofHG+coA/2cNPM
+  </data>
+ </layer>
+ <layer id="2" name="BG2" width="20" height="21">
+  <data encoding="base64" compression="zlib">
+   eJx7zMDA4MqIGx8C4sNAfASIj+JRB8JPgGYxA2lWBvzgMUgtI341IDNYgGqYgFiVgHnEAJAZjFDzXKlgniuSedQCo+aNmjdq3qh5tDRPmUAZjg274cAqVHQbDAAAP+kQ7g==
+  </data>
+ </layer>
+ <layer id="6" name="BG3" width="20" height="21">
+  <data encoding="base64" compression="zlib">
+   eJybwcLAMB+IFwLxKBgYMANL2GMTGwWjYBRAwGj+IA4MtXACAA18BFU=
+  </data>
+ </layer>
+ <layer id="3" name="Mechanisms" width="20" height="21">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFwwkEM0EwtUAxEwTjA02M1LNvoEELAb8MRPjSEgx2/xBjHjXdD7NzFAwMAAAPBwd5
+  </data>
+ </layer>
+ <layer id="4" name="Traps" width="20" height="21">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIwkkMSIwtcxDpqlhHrHuG05+GQWjYBQwMAAAJwgGMQ==
+  </data>
+ </layer>
+ <layer id="5" name="Player" width="20" height="21">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRQE+gOdAOGKQAADNoACo=
+  </data>
+ </layer>
+</map>

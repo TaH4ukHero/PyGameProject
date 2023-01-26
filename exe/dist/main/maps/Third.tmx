@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="1">
+ <tileset firstgid="1" source="tiles.tsx"/>
+ <tileset firstgid="181" source="characters.tsx"/>
+ <tileset firstgid="208" source="Bg2.tsx"/>
+ <layer id="2" name="Задний Фон1" width="44" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztzjERACAMBLDXXbTUa5HABsdlyJ5O0gAAAHyjtnXo9vWl7wDqVE7Z
+  </data>
+ </layer>
+ <layer id="1" name="Заддний Фон2" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DgQBYQZ0Nx1gC7ZSDALCCejYTnDJA7+IGYF4gFkMSaBsgtxALFgXYADoArTZsOjHPIAo1A7MlAnTSALW0NFCDWLaSmLVqWY8S4ZTClLWLcQoyaSAZIOqQmAMVNE5K5IL4nFnukoWKZUPUgNbD4halthKobqHJSGY0e7MAcjR7swBuNHgXUBV5IeCiAoebeUUA5AAAMphZV
+  </data>
+ </layer>
+ <layer id="3" name="Земля" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztlFEKgCAMhj1Z9dyRqjNUz9Vhm5A4hhNd0XzYB/+LTPbhhs4ZhlHCATlRLl0dA9FBBm2JCibIoi3xgPea2+mWfFP4+fcu7kDrvt5vdtHxb9+SmWO0fWvR8H3zB3G+Ya9paB+uLnc39BgF4XzDOQ19e64ud9d8zdd8Zb41fPFncr4rZEtkl8omekjgfG8Y8YIb
+  </data>
+ </layer>
+ <layer id="4" name="Ловушки" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BggesQMXMUjAJSwGgaHBigNED2khvfXlR1Be3BqHvxx7USGRgZEOteoBsWQOkEIrWguJFagB7upWYcDlf34kpP1LSD3mbRw47h6l4vJEyJHV5k4OHiXgCFTRca
+  </data>
+ </layer>
+ <layer id="5" name="Монстры" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzkENACAMBMEaIGABEYhAVlHOWejr0mQn2f9G9DfVUMs9UrDdA0XHPVDw1FXpHgEAAADQygfm6gHP
+  </data>
+ </layer>
+ <layer id="6" name="Механизмы" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzjEBAAAMAiCrrX+pvTbwgQQksHHrAAAAQHlE8QBC
+  </data>
+ </layer>
+ <layer id="7" name="Лестницы" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzkENADAIBDBETcT8K5oGHuxC0ipoFZBw0oGmmw40+c7yneU7a9sXgH8eqKsCdQ==
+  </data>
+ </layer>
+ <layer id="8" name="Секреты" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzsEJwCAQRFEbkNiCPSQlCLaVlGEs1jl6StjDOgjz4N9/CPs7UESJPWKQ2QNGF3vA4EEF3eyRHydq6J3q1KNvlT1gpF9f+vWlX1+7/YqIyDoDaokHRg==
+  </data>
+ </layer>
+ <layer id="9" name="Монетки (3штука макс)" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1DENAAAIBLH3rwC5iGAAklbAjZewqZ51AbjL+wFgpgFfLAHJ
+  </data>
+ </layer>
+ <layer id="10" name="Игрок" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzgENAAAIA6D372M/Y9w5SEACAPDftAMAnLdseAC2
+  </data>
+ </layer>
+ <layer id="11" name="Финиш" width="44" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzoEJAAAEADDHO9wNiqS2CxYBbMvrQNO3LwAATCjKxQEJ
+  </data>
+ </layer>
+</map>
